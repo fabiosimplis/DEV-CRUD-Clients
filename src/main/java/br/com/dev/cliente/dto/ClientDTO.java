@@ -1,10 +1,7 @@
 package br.com.dev.cliente.dto;
 
 import br.com.dev.cliente.entity.Client;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 
@@ -19,6 +16,7 @@ public class ClientDTO {
     @Positive(message = "O valor deve ser positivo")
     private Double income;
     @NotBlank(message = "Campo requerido")
+    @PastOrPresent
     private LocalDate birthDate;
     @Positive(message = "O valor deve ser positivo")
     private Integer children;
