@@ -59,4 +59,14 @@ public class ClientService {
         client.setBirthDate(dto.getBirthDate());
         client.setChildren(dto.getChildren());
     }
+
+    @Transactional
+    public void delete(Long id){
+
+        if (!repository.existsById(id))
+            throw new ResourceNotFoundException("Recurso não encontrado");
+        else
+            repository.deleteById(id);
+
+    }
 }
