@@ -3,6 +3,7 @@ package br.com.dev.cliente.controllers;
 import br.com.dev.cliente.dto.ClientDTO;
 import br.com.dev.cliente.entity.Client;
 import br.com.dev.cliente.services.ClientService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,10 +31,12 @@ public class ClientController {
     }
 
     @PostMapping
-    public ResponseEntity<ClientDTO> add(@RequestBody ClientDTO dto){
+    public ResponseEntity<ClientDTO> insert(@Valid @RequestBody ClientDTO dto){
         dto = service.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
+
+
 }
