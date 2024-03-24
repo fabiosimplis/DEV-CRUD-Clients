@@ -13,12 +13,11 @@ public class ClientDTO {
     @NotBlank(message = "Campo requerido")
     @Pattern(regexp = "\\d{3}\\.?\\d{3}\\.?\\d{3}\\-?\\d{2}")
     private String cpf;
-    @Positive(message = "O valor deve ser positivo")
+    @PositiveOrZero(message = "O valor deve ser positivo ou zero")
     private Double income;
-    @NotBlank(message = "Campo requerido")
-    @PastOrPresent
+    @PastOrPresent(message = "Campo requerido")
     private LocalDate birthDate;
-    @Positive(message = "O valor deve ser positivo")
+    @PositiveOrZero(message = "O valor deve ser positivo ou zero")
     private Integer children;
 
     public ClientDTO(){}
